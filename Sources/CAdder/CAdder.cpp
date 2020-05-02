@@ -1,6 +1,4 @@
 #include "CAdder.h"
-#include <string>
-#include <iostream>
 
 struct adder {
     static const int32_t add(int32_t a, int32_t b) {
@@ -21,3 +19,6 @@ int adder_add(adder_t adder, int32_t a, int32_t b) {
     return adder->add(a, b);
 }
 
+void adder_handler_add(adder_t adder, int32_t a, int32_t b, void* context, adder_handler_t handler) {
+    handler(context, adder->add(a, b));
+}
