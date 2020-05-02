@@ -3,7 +3,8 @@ import XCTest
 
 final class AdderTests: XCTestCase {
     func testAdd() {
-        let result = Adder.add(2, 2);
+        let adder = Adder()
+        let result = adder.add(2, 2);
         XCTAssertEqual(result, 4)
     }
 }

@@ -9,14 +9,15 @@ struct adder {
 };
 
 
-adder* create_adder() {
+adder_t adder_construct() {
     return new adder;
 }
 
-int add(adder* adder, int32_t a, int32_t b) {
+void adder_destruct(adder_t adder) {
+    delete adder;
+}
+
+int adder_add(adder_t adder, int32_t a, int32_t b) {
     return adder->add(a, b);
 }
 
-void free_adder(adder* adder) {
-    delete adder;
-}
