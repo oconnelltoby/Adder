@@ -10,10 +10,26 @@ final class AdderTests: XCTestCase {
     
     func testHandlerAdd() {
         let adder = Adder()
-        let capturedData: String? = "Captured data"
         adder.handlerAdd(2, 2) { result in
-            XCTAssertNotNil(capturedData)
             XCTAssertEqual(result, 4)
         }
+    }
+
+    func testRetainRelease() {
+        class TestClass {}
+        
+        weak var object: TestClass?
+        
+        do {
+            let strongObject = TestClass()
+            let adder = Adder()
+            
+            adder.handlerAdd(2, 2) { result in
+                object = strongObject
+                XCTAssertNotNil(object)
+            }
+        }
+        
+        XCTAssertNil(object)
     }
 }
